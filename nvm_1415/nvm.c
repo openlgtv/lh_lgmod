@@ -102,7 +102,8 @@ void dumpNvram(const char *destPath){
 }
 
 int hook_main(int argc, char **argv) {
-	lh_get_stdout(argv[1]); //redirect stdio and stderr
+	lh_r_process_t *rproc = lh_get_procinfo(argc, argv);
+	lh_get_stdout(rproc->ttyName);
 
 	lh_printf("HELLO WORLD!\n");
 
